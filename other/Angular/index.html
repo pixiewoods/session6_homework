@@ -1,0 +1,116 @@
+<html ng-app="portfolioApp">
+<head>
+	<link rel="stylesheet" type="text/css" href="bootstrap-sass-3.3.5/assets/css/_bootstrap.css">
+	<script src="https://code.angularjs.org/1.2.3/angular.js"></script>
+	<script src="js/app.js"></script>
+
+	<style>
+	.even { color: red; }
+	.odd { color: blue; }
+	.portfolio-date {
+		display: inline-block;
+		float:right;
+	}	
+	.input.ng-valid {
+      background-color: green;
+    }
+    .input.ng-dirty.ng-invalid-required {
+    	background-color: red;
+    }
+    .input.ng-dirty.ng-invalid-pattern {
+    	background-color: orange;
+    }
+    .input.ng-dirty.ng-invalid-minlength {
+    	background-color: yellow;
+    }
+	input[type=text], textarea {
+		padding: 3px;
+		border-radius: 4px;
+		border: 1px solid rgba(0,0,0,.2);
+		color: #333;
+	}
+	.col-xs-4 {
+		min-height: 380px;
+	}
+
+  </style>
+
+</head>
+
+<body style="padding: 50px" ng-controller="PortfolioListController">
+
+	<div class="container-fluid">
+
+		<p>Filter list: <input ng-model="searchFor" size="30"/></p>
+
+		<div class="col-xs-4">
+			<div class="panel panel-default ">
+
+			<div class="alert alert-danger" ng-show="add_portfolio_error">
+			{{  add_portfolio_error }}
+			</div>
+
+				<form name="add_portfolio_form" ng-submit="addPortfolio(adding_portfolio)" action="" novalidate >
+
+
+<!-- <p>Is this form valid? {{  add_portfolio_form.date.$valid }}</p>
+<p>Is this form errored? {{  add_portfolio_form.date.$error }}</p> -->
+
+				<h3>Add New Portfolio</h3>
+				<div class="panel-heading"> 
+					<input type="text" placeholder="title" size="20" 
+					 class="input"
+					 ng-model="adding_portfolio.title" 
+					 ng-required="true"
+					 name="title"
+					/>
+					<span class="portfolio-date">
+						<input type="text" placeholder="yyyy/mm/dd" size="10" 
+						class="input"
+						ng-model="adding_portfolio.date" 
+						ng-pattern="/\d{4}\/\d{2}\/\d{2}/"
+						ng-required="true" 
+						name="date"/>
+					</span>
+				</div>
+				<div class="panel-body">
+					<textarea placeholder="description" rows="4" style="width:100%;" 
+					class="input"
+					ng-model="adding_portfolio.description"
+					ng-required="true"
+					name="description"
+					></textarea>
+					<input type="text" placeholder="short name" 
+					class="input"
+					ng-model="adding_portfolio.name" 
+					ng-required="true"
+					name="name"
+					/>
+
+					<button 
+					ng-disabled="add_portfolio_form.$invalid"
+					type="submit" 
+					class="btn btn-success" 
+					 >Add Portfolio</button>
+				</div>
+			</div>
+		</form>
+		</div>
+	
+	<div class="col-xs-4" ng-repeat="portfolio in portfolios | filter:searchFor | orderBy:'date' " >
+		<div class="panel panel-default panel-primary">
+			<div class="panel-heading"> 
+				{{ portfolio.name }} <span class="portfolio-date">{{ portfolio.date }}</span>
+			</div>
+			<div class="panel-body">
+				<p>{{ portfolio.description }}</p>
+				<img class="img-responsive" ng-src="images/{{ portfolio.imageurl }}" />
+			</div>
+		</div>
+	</div>
+</div>
+
+<p> There are {{ portfolios.length }} portfolios so far!</p>
+
+</body>
+</html>

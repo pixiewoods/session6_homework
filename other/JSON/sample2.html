@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+    <style type="text/css">
+    
+    #placeholder { border:1px solid #eee; padding:4px; }
+    ul {list-style: none;}
+    img { width: 10%; }
+    
+    </style>
+</head>
+
+<body>
+
+    <div id="placeholder"></div>
+
+
+    <script>
+    var data = {
+        "portfolios": [{
+            name: 'vessel1309',
+            title: 'Call of Booty',
+            date: '2013-09-01',
+            description: 'Arrrgh mateys! This be the finest vessel sailing these seas that yer eyes ever laid sight on. Arrrgh.',
+            imageurl: {
+                img1: 'images/drunkenPirate_thumb1.png',
+                img2: 'images/drunkenPirate_thumb2.png',
+                img3: 'images/drunkenPirate_thumb3.png',
+            }
+        }, {
+            name: 'innocents1404',
+            title: 'The Sack of the Innocents',
+            date: '2014-04-15',
+            description: 'This be a detail of the sacking of the innocents where I played an important role as business analyst and in implementation.',
+            imageurl: {
+                img1: 'images/drunkenPirate_thumb2.png',
+                img2: 'images/drunkenPirate_thumb1.png',
+                img3: 'images/drunkenPirate_thumb3.png',
+            }
+        }, {
+            name: 'firstmate1210',
+            title: 'Pipe and First Mate',
+            date: '2012-10-01',
+            description: 'After a hard day of lootin\' and shootin\' I like to relax with my best mates and tally up the days booty.',
+            imageurl: {
+                img1: 'images/drunkenPirate_thumb3.png',
+                img2: 'images/drunkenPirate_thumb1.png',
+                img3: 'images/drunkenPirate_thumb2.png',
+            }
+        }]
+    }
+    var output = "<ul>";
+    for (var i in data.portfolios) {
+        output += 
+        "<li>" + 
+        
+        "<img src=" + 
+        data.portfolios[i].imageurl.img1 + "/>" + 
+
+        "<img src=" + 
+        data.portfolios[i].imageurl.img2 + "/>" + 
+
+        "<img src=" + 
+        data.portfolios[i].imageurl.img3 + "/>" + 
+
+        data.portfolios[i].title + " -- " + 
+        data.portfolios[i].date + " -- " + 
+        data.portfolios[i].description  +
+        "</li>";
+    }
+    output += "</ul>";
+    document.getElementById("placeholder").innerHTML = output;
+    </script>
+</body>
+</html>

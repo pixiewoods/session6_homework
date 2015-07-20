@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<script type="text/javascript" src="modernizr.js"></script>
+	<style>
+	body {font-family: sans-serif;}
+	form {
+		width:320px;
+		padding: 0;
+		background: rgb(200, 220, 212);
+	}
+	ol {
+		list-style: none;
+		padding: 0;
+	}
+	*:focus {
+		outline: none;
+	}
+	fieldset { border: none; }
+	legend {
+		font-size: 1.2em;
+		margin-bottom: 20px;
+	}
+	input, textarea {
+		border: 1px solid #ccc;
+		font-size: 1.2em;
+		min-width: 300px;
+		min-height: 30px;
+		display: inline-block;
+		margin: 8px 0 12px;
+		border-radius: 4px;
+		transition: all 0.5s ease-in-out;
+	}
+	textarea {
+		min-height: 200px;
+	}
+	input:focus, textarea:focus {
+		box-shadow: 0 0 20px #ccc;
+		transform: scale(1.05);
+	}
+	input:not(:focus), textarea:not(:focus) {
+		background-color: #fff;
+		opacity: 0.25;
+	}
+	input:required, textarea:required {
+		background: #fff url(asterisk_orange.png) no-repeat 280px 6px; 
+	}
+	input:valid, textarea:valid {
+		background: #fff url(tick.png) no-repeat 280px 6px; 		
+	}
+	input:focus:invalid, textarea:focus:invalid {
+		background: #fff url(cancel.png) no-repeat 280px 6px;
+	}
+	input[type="submit"]{
+		padding: 10px;
+		background: none;
+	}
+	::-webkit-input-placeholder {
+		color: blue;
+	};
+	</style>
+</head>
+<body>
+	<form name="" action="" novalidate > 
+		<fieldset>
+			<legend>Form Demo</legend>
+			<ol>
+				<li><label for="name">Name</label>
+					<input type="text" name="name" autofocus placeholder="Name" required />
+				</li>
+
+				<li><label for="email">Email</label>
+					<input type="email" name="email" placeholder="Email" required 
+					autocorrect="off" 
+					autocapitalize="off"
+					/>
+				</li>
+
+				<li><label for="website">Website</label> 
+					<input type="url" name="website" placeholder="www.example.com" required
+					autocorrect="off" 
+					autocapitalize="off"			
+					/>
+				</li>
+
+				<li><label for="number">Number</label> 
+					<input type="number" name="number" 
+					min="0" max="10" step="2"
+					placeholder="Even numbers < 10" required />
+				</li>
+
+				<li><label for="range">Range</label> 
+					<input type="range" name="range" required 
+					min="0" max="10" step="2"/>
+				</li>
+
+				<li><label for="date">Date</label>
+					<input type="date" name="date" required />
+
+				</li>	
+
+				<li><label for="message">Message</label> 
+					<textarea name="message" required ></textarea>
+				</li>
+
+				<li><input type="submit" value="Send Message" />
+				</li>
+			</ol>
+		</fieldset>
+	</form>	
+
+<script type="text/javascript">
+if (!Modernizr.inputtypes.date) {
+	console.log('no date');
+}
+if (!Modernizr.touch) {
+	console.log('no touch');
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

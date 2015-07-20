@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSON</title>
+<style type="text/css">
+    
+#placeholder { border:1px solid #eee; padding:4px; }
+ul {list-style: none;}
+img { width: 10%; }
+    
+</style>
+</head>
+
+<body>
+
+<div id="placeholder"></div>
+
+ <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+<script>
+$.getJSON('portfolios.json', function(data) {
+    var output = "<ul>";
+    for (var i in data.portfolios) {
+        output += 
+        "<li>" + 
+        
+        "<img src=" + 
+        data.portfolios[i].imageurl.img1 + "/>" + 
+
+        "<img src=" + 
+        data.portfolios[i].imageurl.img2 + "/>" + 
+
+        "<img src=" + 
+        data.portfolios[i].imageurl.img3 + "/>" + 
+
+        data.portfolios[i].title + " -- " + 
+        data.portfolios[i].date + " -- " + 
+        data.portfolios[i].description  +
+        "</li>";
+    }
+    output += "</ul>";
+    document.getElementById("placeholder").innerHTML = output;
+});
+</script>
+</body>
+</html>
